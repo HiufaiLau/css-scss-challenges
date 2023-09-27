@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box; }
+  *::after, *::before {
+    box-sizing: border-box; }
+
+a {
+  text-decoration: none; }
+
+body {
+  font-size: 0.875rem;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  @media (min-width: 576px) {
+    body {
+      font-size: 0.995rem; } }
+  @media (min-width: 768px) {
+    body {
+      font-size: 1rem; } }
+
+.blue, .grid .ui-container .ui-panel .ui-front {
+  background: #1da1f2; }
+
+.dark-blue {
+  background: #4867aa; }
+
+.pink {
+  background: #e9196f; }
+
+.yellow {
+  background: #fef200 !important; }
+
+.red {
+  background: #c71d20; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  grid-auto-rows: minmax(max-content, 150px);
+  grid-gap: 1.5rem;
+  max-width: 100%;
+  width: 960px;
+  justify-content: center; }
+  .grid .ui-container {
+    perspective: 1000px;
+    /* When the ui-container is hovered, then the ui-panel will rotate.
+             The hover is done on the parent because the parent has no transform.
+             This is done in order to limit the flicker effect when the mouse is not
+             hovering directly on top of the ui-panel */ }
+    .grid .ui-container .ui-panel {
+      position: relative;
+      font-size: 4rem;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg) rotateY(0deg);
+      transition: all 0.3s linear; }
+      .grid .ui-container .ui-panel .ui-front,
+      .grid .ui-container .ui-panel .ui-side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 5px solid white;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .grid .ui-container .ui-panel .ui-front {
+        transform: translateZ(4.5rem); }
+      .grid .ui-container .ui-panel .ui-side {
+        transform: rotateY(-90deg) translateZ(4.5rem); }
+    .grid .ui-container:hover .ui-panel {
+      transform: rotateX(0deg) rotateY(90deg); }

@@ -1,0 +1,133 @@
+// Main variables
+
+// Colors
+$blue: #1da1f2;
+$dark-blue: #4867aa;
+$pink: #e9196f;
+$yellow: #fef200;
+$red: #c71d20;
+$white: #fff;
+$charcoal: #111;
+
+// Default font sizes based on height
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-md: 0.995rem !default;
+$font-size-sm: 0.875rem !default;
+// Main styles
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+a {
+  text-decoration: none;
+}
+
+// Custom CSS
+body {
+  font-size: $font-size-sm;
+  font-family: "Roboto", sans-serif;
+
+  // Just for codepen purposes
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 576px) {
+    font-size: $font-size-md;
+  }
+
+  @media (min-width: 768px) {
+    font-size: $font-size-base;
+  }
+}
+
+// Colors
+.blue {
+  background: $blue;
+}
+.dark-blue {
+  background: $dark-blue;
+}
+.pink {
+  background: $pink;
+}
+.yellow {
+  background: $yellow !important;
+}
+.red {
+  background: $red;
+}
+
+// CSS Grid
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    150px
+  ); // Fills the column space dynamically without media queries
+  grid-auto-rows: minmax(
+    max-content,
+    150px
+  ); // Controls the rows dynamically without media queries
+  grid-gap: 1.5rem;
+  max-width: 100%;
+  width: 960px;
+  justify-content: center; // The grid justifies itself
+
+  // Give a perspecive to the container
+  .ui-container {
+    perspective: 1000px;
+
+    // Poistion the ul panel, because the panel itself is what will rotate
+    .ui-panel {
+      position: relative;
+      font-size: 4rem;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg) rotateY(0deg);
+      transition: all 0.3s linear;
+
+      // Set the front and side shared properties
+      .ui-front,
+      .ui-side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 5px solid white; // The border is what gives the main effect of seperation between front and side
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      // The front and side panel have a z translation in order to get the proper positioning of the rotation effect
+      .ui-front {
+        transform: translateZ(4.5rem);
+        @extend .blue;
+      }
+      // The side panel starts with a negative rotation
+      .ui-side {
+        transform: rotateY(-90deg) translateZ(4.5rem);
+      }
+    }
+
+    /* When the ui-container is hovered, then the ui-panel will rotate.
+             The hover is done on the parent because the parent has no transform.
+             This is done in order to limit the flicker effect when the mouse is not
+             hovering directly on top of the ui-panel */
+    &:hover .ui-panel {
+      transform: rotateX(0deg) rotateY(90deg);
+    }
+  }
+}

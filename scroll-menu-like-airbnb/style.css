@@ -1,0 +1,23 @@
+#container {
+  max-width: 300px;
+  border: 1px solid #ccc;
+  overflow-x: scroll;
+}
+
+#content {
+  width: 900px;
+}
+
+.content-list {
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  margin: 12px 8px;
+}
+
+.content-list .item {
+  list-style: none;
+  width: 250px;
+  height: 80px;
+  background-color: #ccc;
+}

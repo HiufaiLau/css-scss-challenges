@@ -1,25 +1,22 @@
 // script.js
-const button = document.getElementById("slide");
+const rightBtn = document.querySelector("#right-button");
+const leftBtn = document.querySelector("#left-button");
+const menuItems = document.querySelectorAll(".item");
 
-button.onclick = () => {
-  document.getElementById("container").scrollLeft += 20;
-};
+rightBtn.addEventListener("click", function (event) {
+  const conent = document.querySelector("#container");
+  conent.scrollLeft += 80;
+  event.preventDefault();
+});
 
-// const menuContainer = document.querySelector(".menu-container");
-// const menuItems = document.querySelectorAll(".menu-item");
-// const scrollLeftButton = document.getElementById("scroll-left");
-// const scrollRightButton = document.getElementById("scroll-right");
+leftBtn.addEventListener("click", function (event) {
+  const conent = document.querySelector("#container");
+  conent.scrollLeft -= 80;
+  event.preventDefault();
+});
 
-// scrollLeftButton.addEventListener("click", () => {
-//   menuContainer.scrollLeft -= 100; // Adjust the scroll offset as needed
-// });
-
-// scrollRightButton.addEventListener("click", () => {
-//   menuContainer.scrollLeft += 100; // Adjust the scroll offset as needed
-// });
-
-// menuItems.forEach((item) => {
-//   item.addEventListener("click", () => {
-//     item.scrollIntoView({ behavior: "smooth", block: "center" });
-//   });
-// });
+menuItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    item.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+});

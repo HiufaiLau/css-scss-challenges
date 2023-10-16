@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Style the range slider */
+      input[type="range"] {
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      /* Style the container for the slider value */
+      .slider-container {
+        text-align: center;
+        padding: 8px;
+      }
+
+      /* Style the container for the degree values */
+      .degree-values {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+
+      .degree-values span {
+        padding: 0 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Angle Range Slider</h1>
+
+    <div class="slider-container">
+      <input
+        type="range"
+        min="0"
+        max="18"
+        step="1"
+        value="0"
+        class="slider"
+        id="angleSlider"
+      />
+
+      <div class="degree-values">
+        <span>0°</span> <span>5°</span> <span>10°</span> <span>15°</span>
+        <span>20°</span> <span>25°</span> <span>30°</span> <span>35°</span>
+        <span>40°</span> <span>45°</span> <span>50°</span> <span>55°</span>
+        <span>60°</span> <span>65°</span> <span>70°</span> <span>75°</span>
+        <span>80°</span> <span>85°</span> <span>90°</span>
+      </div>
+      <p>Angle: <span id="angleValue">0</span></p>
+    </div>
+
+    <script>
+      // Get the range slider and the paragraph element
+      var slider = document.getElementById("angleSlider");
+      var output = document.getElementById("angleValue");
+
+      // Display the default value
+      output.innerHTML = slider.value * 5 + "°";
+
+      // Update the slider value when it's changed
+      slider.oninput = function () {
+        output.innerHTML = this.value * 5 + "°";
+      };
+    </script>
+  </body>
+</html>
